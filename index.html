@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GPS Test</title>
+    <title>Local Results</title>
 </head>
 <body>
-    <h1>GPS Location Test</h1>
+    <h1>Find local results near you</h1>
 
-    <button onclick="getLocation()">Get My Location</button>
+    <button onclick="getLocation()">Yes</button>
 
-    <p id="result">Location not requested yet.</p>
+    <p id="result"></p>
 
     <script>
         function getLocation() {
             if (!navigator.geolocation) {
                 document.getElementById("result").textContent =
-                    "Geolocation is not supported by this browser.";
+                    "Location is not supported by this browser.";
                 return;
             }
 
             navigator.geolocation.getCurrentPosition(
                 function(position) {
                     document.getElementById("result").textContent =
-                        "Latitude: " + position.coords.latitude +
-                        " | Longitude: " + position.coords.longitude;
+                        "Location confirmed.";
                 },
                 function(error) {
                     document.getElementById("result").textContent =
-                        "Location permission was denied or unavailable.";
+                        "Location permission was not granted.";
                 }
             );
         }
